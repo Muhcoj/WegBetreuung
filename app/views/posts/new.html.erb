@@ -1,0 +1,9 @@
+<%= form_for @post do |f| %>
+
+  <%= f.text_field :title %>
+  <%= f.text_area :content %>
+  <%= f.date_field :date %>
+
+  <%= f.submit 'Speicher' %>
+
+<% end %>
