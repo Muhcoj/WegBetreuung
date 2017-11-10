@@ -1,9 +1,3 @@
-<%= form_for @post do |f| %>
+<h1>Neuer Nachricht</h1>
 
-  <%= f.text_field :title %>
-  <%= f.text_area :content %>
-  <%= f.date_field :date %>
-
-  <%= f.submit 'Speicher' %>
-
-<% end %>
+<%= render 'form' %>

@@ -2,5 +2,7 @@
 
 <% @posts.each do |post| %>
   <%=  post.inspect %>
+  <%= link_to 'Bearbeiten', edit_post_path(post), id: "edit_#{post.id}" %>
+  <%= link_to 'Löschen', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
   <hr>
 <% end %>

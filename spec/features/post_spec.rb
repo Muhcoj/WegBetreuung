@@ -10,7 +10,7 @@ describe 'navigate' do
     before do
       visit posts_path 
     end
-    
+
     it 'can be reached successfully' do
       expect(page.status_code).to eq(200)
     end
@@ -45,4 +45,46 @@ describe 'navigate' do
       expect(page).to have_content("Some Title")
     end
   end
+
+  describe 'edit' do
+    before do
+      @post = FactoryBot.create(:post)
+    end
+
+    it 'can be reached by clicking edit on index page' do
+      visit posts_path
+
+      click_link("edit_#{@post.id}")
+      expect(page.status_code).to eq(200)
+    end
+
+    it 'can be edited from a edit form page' do
+      visit edit_post_path(@post)
+
+      fill_in 'post[title]', with: "Some Title edited"
+      fill_in 'post[content]', with: "Some content asdfasdf edited"
+      fill_in 'post[date]', with: Date.yesterday
+      click_on "Speicher"
+
+      expect(page).to have_content("Some Title edited")
+    end
+  end
+
+  describe 'delete' do
+    it 'can be deleted' do
+      @post = FactoryBot.create(:post)
+      visit posts_path
+
+      click_link("delete_post_#{@post.id}_from_index")
+      expect(page.status_code).to eq(200)
+    end
+  end
 end
+
+
+
+
+
+
+
+
