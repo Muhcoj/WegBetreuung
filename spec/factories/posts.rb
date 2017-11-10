@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     date Date.today
-    title "Title one"
+    title "Title One"
     content "Some Content"
   end
 

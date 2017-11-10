@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   describe "Creation" do
     before do
-      @post = Post.create(title: "My Title", content: "My content asdfasdf", date: Date.today)
+      @post = FactoryBot.create(:post)
     end
 
     it 'can be created' do
