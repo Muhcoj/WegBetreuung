@@ -9,7 +9,13 @@
   </head>
 
   <body class="container">
-    <%= render 'shared/alerts' %>
-    <%= yield %>
+    <div class="row">
+      <div class="col-md-12">
+       <%= render 'shared/alerts' %>
+       <%= render 'shared/nav' %>
+        <%= yield %> 
+      </div>
+    </div>
   </body>
+
 </html>

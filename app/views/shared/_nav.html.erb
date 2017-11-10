@@ -1,0 +1,39 @@
+<div class='logo'>
+  <h1>WEG BETREUUNG</h1>
+</div>
+
+
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to "Home", root_path %>
+  </li>
+  <li>
+    <%= link_to "Kontoumsätze", posts_path %>
+  </li>
+  <li>
+    <%= link_to "Kontakt", posts_path %>
+  </li>
+<!--   <li class="disabled">
+    <a href="#">Messages</a>
+  </li> -->
+  <li class="dropdown pull-right">
+     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
+    <ul class="dropdown-menu">
+      <li>
+        <%= link_to "Bewohner bearbeiten", edit_user_registration_path %>
+      </li>
+      <li>
+        <%= link_to "Nachricht schreiben und bearbeiten", new_post_path %>
+      </li>
+      <li>
+        <%= link_to "Kontoumsätze hochladen und bearbeiten", new_post_path %>
+      </li>
+      </li>
+        <li class="divider">
+      </li>
+      <li>
+        <%= link_to "Abmelden", root_path %>
+      </li>
+    </ul>
+  </li>
+</ul>
