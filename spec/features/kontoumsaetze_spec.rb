@@ -1,6 +1,11 @@
 require "rails_helper"
 
 describe 'navigate' do 
+  before do
+    @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Don", last_name: "Johnson")
+    login_as(@user, :scope => :user)
+  end
+
   describe 'index' do
     before do
       visit kontoumsaetzes_path
@@ -13,12 +18,17 @@ describe 'navigate' do
     it 'has a title of Kontoumsätze' do
       expect(page).to have_content(/Kontoumsätze/)
     end
+
+    it 'has a list of kontoumsätze' do
+      kontoumsaetze1 = Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80, user_id: @user.id)
+      kontoumsaetze2 = Kontoumsaetze.create(weg: 1, wertstellung: "08.07.2017", umsatzart: "Gutschrift2", buchungsdetails: "Referenz 9562231945DI2", auftraggeber: "ANNEGRET2", empfaenger: "Klaus-Dieter2", betrag: 200.20, saldo: 22000.80, user_id: @user.id)
+      visit kontoumsaetzes_path
+      expect(page).to have_content(/Gutschrift|Gutschrift2/)
+    end
   end
 
   describe 'creation' do
     before do
-      user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Don", last_name: "Johnson")
-      login_as(user, :scope => :user)
       visit new_kontoumsaetze_path
     end
 

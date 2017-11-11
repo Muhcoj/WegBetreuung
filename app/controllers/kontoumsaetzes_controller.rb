@@ -3,6 +3,7 @@ class KontoumsaetzesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @kontoumsaetzes = Kontoumsaetze.all
   end
 
   def new
