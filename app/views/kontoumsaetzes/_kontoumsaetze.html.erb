@@ -1,0 +1,13 @@
+<tr>
+    <td><%= kontoumsaetze.weg %></td>
+    <td><%= kontoumsaetze.wertstellung %></td>
+    <td><%= kontoumsaetze.umsatzart %></td>
+    <td><%= kontoumsaetze.buchungsdetails.truncate(15) %></td>
+    <td><%= kontoumsaetze.auftraggeber.truncate(15) %></td>
+    <td><%= kontoumsaetze.empfaenger.truncate(15) %></td>
+    <td><%= kontoumsaetze.betrag %></td>
+    <td><%= kontoumsaetze.saldo %></td>
+    <td><%= link_to 'Zeigen', kontoumsaetze %></td>
+    <td><%#= link_to 'Edit', edit_kontoumsatz_path(kontoumsaetze) %></td>
+    <td><%#= link_to 'Destroy', kontoumsaetze, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
