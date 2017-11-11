@@ -17,7 +17,7 @@ end
 puts "10 Posts have been created"
 
 100.times do |kontoumsaetze|
-  Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80, user_id: @user.id)
+  Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.22, saldo: 12000.87, user_id: @user.id)
 end
 
 puts "100 Kontoumsaetze have been created"

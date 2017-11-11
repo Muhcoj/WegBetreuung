@@ -1,5 +1,5 @@
 class KontoumsaetzesController < ApplicationController
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :edit, :update]
   before_action :authenticate_user!
 
   def index
@@ -22,6 +22,17 @@ class KontoumsaetzesController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @kontoumsaetze.update(post_params)
+      redirect_to @kontoumsaetze, notice: 'Ihre Kontoumsätze wurde erfolgreich aktualisiert'
+    else
+      render :edit
+    end
   end
 
   private

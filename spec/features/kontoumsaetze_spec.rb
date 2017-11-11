@@ -65,4 +65,44 @@ describe 'navigate' do
       expect(User.last.kontoumsaetzes.last.umsatzart).to eq("User Gutschrift")
     end
   end
+
+  describe 'edit' do
+    before do
+      @kontoumsaetze = Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80, user_id: @user.id)
+    end
+    it 'can be reached by clicking edit on index page' do
+      visit kontoumsaetzes_path
+
+      click_link("edit_#{@kontoumsaetze.id}")
+      expect(page.status_code).to eq(200)
+    end
+
+    it 'can be edited from a edit form page' do
+      visit edit_kontoumsaetze_path(@kontoumsaetze)
+
+      fill_in 'kontoumsaetze[weg]', with: 2
+      fill_in 'kontoumsaetze[wertstellung]', with: "08.08.2017"
+      fill_in 'kontoumsaetze[umsatzart]', with: "Edit Gutschrift"
+      fill_in 'kontoumsaetze[buchungsdetails]', with: "Referenz 9562231945DI"
+      fill_in 'kontoumsaetze[auftraggeber]', with: "ANNEGRET"
+      fill_in 'kontoumsaetze[empfaenger]', with: "Klaus-Dieter"
+      fill_in 'kontoumsaetze[betrag]', with: 300.20
+      fill_in 'kontoumsaetze[saldo]', with: 32000.80
+      click_on "Speichern"
+
+      expect(page).to have_content("Edit Gutschrift")
+    end
+  end
+
 end
+
+
+
+
+
+
+
+
+
+
+
