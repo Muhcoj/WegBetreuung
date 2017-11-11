@@ -1,0 +1,2 @@
+module KontoumsaetzesHelper
+end

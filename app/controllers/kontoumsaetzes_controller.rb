@@ -1,0 +1,2 @@
+class KontoumsaetzesController < ApplicationController
+end
