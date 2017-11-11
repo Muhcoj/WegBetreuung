@@ -2,25 +2,29 @@ require "rails_helper"
 
 describe 'navigate' do 
   describe 'index' do
-    it 'can be reached successfully' do 
+    before do
       visit kontoumsaetzes_path
+    end
+
+    it 'can be reached successfully' do 
       expect(page.status_code).to eq(200)
     end
 
     it 'has a title of Kontoumsätze' do
-      visit kontoumsaetzes_path
       expect(page).to have_content(/Kontoumsätze/)
     end
   end
 
   describe 'creation' do
-    it 'has a new form that can be reached' do
+    before do
       visit new_kontoumsaetze_path
+    end
+
+    it 'has a new form that can be reached' do
       expect(page.status_code).to eq(200)
     end
 
     it 'can be created from a new form page' do
-      visit new_kontoumsaetze_path
 
       fill_in 'kontoumsaetze[weg]', with: 2
       fill_in 'kontoumsaetze[wertstellung]', with: "08.08.2017"

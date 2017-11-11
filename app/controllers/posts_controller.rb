@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(params.require(:post).permit(:title, :content, :date))
+    @post = Post.new(post_params)
 
     if @post.save
       redirect_to @post, notice: "Nachricht gespeichert"

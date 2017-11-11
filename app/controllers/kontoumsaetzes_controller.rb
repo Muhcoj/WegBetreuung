@@ -1,4 +1,5 @@
 class KontoumsaetzesController < ApplicationController
+  before_action :set_post, only: [:show]
 
   def index
   end
@@ -8,14 +9,25 @@ class KontoumsaetzesController < ApplicationController
   end
 
   def create
-    @kontoumsaetze = Kontoumsaetze.new(params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo))
+    @kontoumsaetze = Kontoumsaetze.new(post_params)
 
-    @kontoumsaetze.save
-
-    redirect_to @kontoumsaetze
+    if @kontoumsaetze.save
+      redirect_to @kontoumsaetze, notice: "Kontoumsätze gespeichert"
+    else
+      render :new
+    end
   end
 
   def show
+  end
+
+  private
+
+  def post_params
+    params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo)
+  end
+
+  def set_post
     @kontoumsaetze = Kontoumsaetze.find(params[:id])
   end
 
