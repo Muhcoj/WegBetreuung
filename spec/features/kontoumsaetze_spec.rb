@@ -94,6 +94,15 @@ describe 'navigate' do
     end
   end
 
+  describe 'delete' do
+    it 'can be deleted' do
+      @kontoumsaetze = Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80, user_id: @user.id)
+      visit kontoumsaetzes_path
+
+      click_link("delete_kontoumsaetze_#{@kontoumsaetze.id}_from_index")
+      expect(page.status_code).to eq(200)
+    end
+  end
 end
 
 

@@ -9,5 +9,5 @@
     <td><%= kontoumsaetze.saldo %></td>
     <td><%= link_to 'Zeigen', kontoumsaetze %></td>
     <td><%= link_to 'Bearbeiten', edit_kontoumsaetze_path(kontoumsaetze), id: "edit_#{kontoumsaetze.id}" %></td>
-    <td><%#= link_to 'Destroy', kontoumsaetze, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Löschen', kontoumsaetze_path(kontoumsaetze), id: "delete_kontoumsaetze_#{kontoumsaetze.id}_from_index", method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>

@@ -1,5 +1,5 @@
 class KontoumsaetzesController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -33,6 +33,11 @@ class KontoumsaetzesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @kontoumsaetze.delete
+    redirect_to kontoumsaetzes_path, notice: 'Ihre Kontoumsätze wurde erfolgreich entfernt'
   end
 
   private
