@@ -17,6 +17,8 @@ describe 'navigate' do
 
   describe 'creation' do
     before do
+      user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Don", last_name: "Johnson")
+      login_as(user, :scope => :user)
       visit new_kontoumsaetze_path
     end
 
@@ -37,6 +39,20 @@ describe 'navigate' do
       click_on "Speichern"
 
       expect(page).to have_content("Referenz 9562231945DI")
+    end
+
+    it 'will have a user associated with it' do
+      fill_in 'kontoumsaetze[weg]', with: 2
+      fill_in 'kontoumsaetze[wertstellung]', with: "08.08.2017"
+      fill_in 'kontoumsaetze[umsatzart]', with: "User Gutschrift"
+      fill_in 'kontoumsaetze[buchungsdetails]', with: "Referenz 9562231945DI"
+      fill_in 'kontoumsaetze[auftraggeber]', with: "ANNEGRET"
+      fill_in 'kontoumsaetze[empfaenger]', with: "Klaus-Dieter"
+      fill_in 'kontoumsaetze[betrag]', with: 300.20
+      fill_in 'kontoumsaetze[saldo]', with: 32000.80
+      click_on "Speichern"
+
+      expect(User.last.kontoumsaetzes.last.umsatzart).to eq("User Gutschrift")
     end
   end
 end

@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Kontoumsaetze, type: :model do
   describe 'Creation' do
     before do
-      @kontoumsaetze = Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80)
+      user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Don", last_name: "Johnson")
+      @kontoumsaetze = Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.20, saldo: 12000.80, user_id: user.id)
     end
 
     it 'can be created' do 

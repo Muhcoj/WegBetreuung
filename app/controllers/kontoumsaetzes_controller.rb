@@ -1,5 +1,6 @@
 class KontoumsaetzesController < ApplicationController
   before_action :set_post, only: [:show]
+  before_action :authenticate_user!
 
   def index
   end
@@ -10,6 +11,7 @@ class KontoumsaetzesController < ApplicationController
 
   def create
     @kontoumsaetze = Kontoumsaetze.new(post_params)
+    @kontoumsaetze.user_id = current_user.id
 
     if @kontoumsaetze.save
       redirect_to @kontoumsaetze, notice: "Kontoumsätze gespeichert"
