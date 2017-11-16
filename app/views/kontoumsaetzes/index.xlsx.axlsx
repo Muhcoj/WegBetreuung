@@ -1,0 +1,12 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: "Kontoumsaetzes") do |sheet|
+  # this is the head row of your spreadsheet
+  sheet.add_row %w(weg wertstellung umsatzart buchungsdetails auftraggeber empfaenger betrag saldo)
+  
+  # each kontoumsaetze is a row on your spreadsheet
+  @kontoumsaetzes.each do |kontoumsaetze|
+    sheet.add_row [kontoumsaetze.weg, kontoumsaetze.wertstellung, kontoumsaetze.umsatzart, kontoumsaetze.buchungsdetails, kontoumsaetze.auftraggeber, kontoumsaetze.empfaenger, kontoumsaetze.betrag, kontoumsaetze.saldo]
+  end
+end
+
