@@ -5,8 +5,8 @@
     <td><%= kontoumsaetze.buchungsdetails.truncate(15) %></td>
     <td><%= kontoumsaetze.auftraggeber.truncate(15) %></td>
     <td><%= kontoumsaetze.empfaenger.truncate(15) %></td>
-    <td><%= kontoumsaetze.betrag %></td>
-    <td><%= kontoumsaetze.saldo %></td>
+    <td><%= number_to_currency(kontoumsaetze.betrag, :unit=>'€') %></td>
+    <td><%= number_to_currency(kontoumsaetze.saldo, :unit=>'€') %></td>
     <td><%= link_to 'Zeigen', kontoumsaetze %></td>
     <td><%= link_to 'Bearbeiten', edit_kontoumsaetze_path(kontoumsaetze), id: "edit_#{kontoumsaetze.id}" %></td>
     <td><%= link_to 'Löschen', kontoumsaetze_path(kontoumsaetze), id: "delete_kontoumsaetze_#{kontoumsaetze.id}_from_index", method: :delete, data: { confirm: 'Are you sure?' } %></td>

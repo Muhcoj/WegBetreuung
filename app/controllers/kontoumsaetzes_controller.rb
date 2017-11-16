@@ -11,6 +11,8 @@ class KontoumsaetzesController < ApplicationController
     end
   end
 
+ 
+
   def new
     @kontoumsaetze = Kontoumsaetze.new
   end
@@ -45,14 +47,19 @@ class KontoumsaetzesController < ApplicationController
     redirect_to kontoumsaetzes_path, notice: 'Ihre Kontoumsätze wurde erfolgreich entfernt'
   end
 
+  def import
+    Kontoumsaetze.import(params[:file])
+    redirect_to kontoumsaetzes_path, notice: "Erfolgreich importiert"
+  end
+
   private
 
-  def post_params
-    params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo)
-  end
+    def post_params
+      params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo)
+    end
 
-  def set_post
-    @kontoumsaetze = Kontoumsaetze.find(params[:id])
-  end
+    def set_post
+      @kontoumsaetze = Kontoumsaetze.find(params[:id])
+    end
 
 end
