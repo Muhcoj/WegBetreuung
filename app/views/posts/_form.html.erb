@@ -1,9 +1,20 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, class: "form-horizontal" do |f| %>
+  
+  <div class="form-group">
+    <%= f.label :title, class: "col-sm-2 control-label" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
-  <%= f.text_field :title %>
-  <%= f.text_area :content %>
-  <%= f.date_field :date %>
+  <div class="form-group">
+    <%= f.label :content, class: "col-sm-2 control-label" %>
+    <%= f.text_area :content, class: "form-control" %>
+  </div>
 
-  <%= f.submit 'Speicher' %>
+  <div class="form-group">
+    <%= f.label :date, class: "col-sm-2 control-label" %>
+    <%= f.date_field :date, class: "form-control" %>
+  </div>
+
+  <%= f.submit 'Speicher', class: 'btn btn-primary btn-block' %>
 
 <% end %>

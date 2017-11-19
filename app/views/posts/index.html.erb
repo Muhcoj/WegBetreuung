@@ -1,8 +1,18 @@
-<h1>Posts</h1>
-
-<% @posts.each do |post| %>
-  <%=  post.inspect %>
-  <%= link_to 'Bearbeiten', edit_post_path(post), id: "edit_#{post.id}" %>
-  <%= link_to 'Löschen', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
-  <hr>
+<% @posts.each do |post| %>  
+  <div class="col-md-4">
+    <div style="padding: 25px;">
+      <%= link_to(post) do %>
+        <h3 style="color: #337ab7;">
+          <%= post.title %>
+        </h3>
+      <% end %>
+      <hr>
+      <p style="font-size: 0.8em; color: #777777; "><i><%= post.date %></i></p>
+      <p>
+        <%= post.content.truncate(250) %>
+      </p>
+      <%= link_to 'Bearbeiten', edit_post_path(post), id: "edit_#{post.id}" %>
+      <%= link_to 'Löschen', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
+    </div>
+  </div>
 <% end %>

@@ -1,4 +1,4 @@
-<%= form_for @kontoumsaetze do |f| %>
+<%= form_for @kontoumsaetze, class: "form-horizontal" do |f| %>
   <%# if kontoumsaetze.errors.any? %>
     <!-- <div id="error_explanation">
       <h2><%#= pluralize(kontoumsaetze.errors.count, "error") %> prohibited this kontoumsaetze from being saved:</h2>
@@ -11,47 +11,47 @@
     </div> -->
   <%# end %>
 
-  <div class="field">
-    <%= f.label :weg %>
-    <%= f.number_field :weg %>
+  <div class="form-group">
+    <%= f.label :weg, class: "col-sm-2 control-label" %>
+    <%= f.number_field :weg, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :wertstellung %>
-    <%= f.text_field :wertstellung %>
+  <div class="form-group">
+    <%= f.label :wertstellung, class: "col-sm-2 control-label" %>
+    <%= f.text_field :wertstellung, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :umsatzart %>
-    <%= f.text_field :umsatzart %>
+  <div class="form-group">
+    <%= f.label :umsatzart, class: "col-sm-2 control-label" %>
+    <%= f.text_field :umsatzart, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :buchungsdetails %>
-    <%= f.text_field :buchungsdetails %>
+  <div class="form-group">
+    <%= f.label :buchungsdetails, class: "col-sm-2 control-label" %>
+    <%= f.text_field :buchungsdetails, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :auftraggeber %>
-    <%= f.text_field :auftraggeber %>
+  <div class="form-group">
+    <%= f.label :auftraggeber, class: "col-sm-2 control-label" %>
+    <%= f.text_field :auftraggeber, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :empfaenger %>
-    <%= f.text_field :empfaenger %>
+  <div class="form-group">
+    <%= f.label :empfaenger, class: "col-sm-2 control-label" %>
+    <%= f.text_field :empfaenger, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :betrag %>
-    <%= f.text_field :betrag, :step => 0.01 %>
+  <div class="form-group">
+    <%= f.label :betrag, class: "col-sm-2 control-label" %>
+    <%= f.text_field :betrag, :step => 0.01, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :saldo %>
-    <%= f.text_field :saldo, :step => 0.01 %>
+  <div class="form-group">
+    <%= f.label :saldo, class: "col-sm-2 control-label" %>
+    <%= f.text_field :saldo, :step => 0.01, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Speichern' %>
+    <%= f.submit 'Speichern', class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
 
   def index  
-    @posts = Post.all
+    @posts = Post.order('created_at DESC').limit(3)
   end
 
   def new
