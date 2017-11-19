@@ -6,7 +6,7 @@
       <hr>
       <p style="font-size: 0.8em; color: #777777; "><i><%= @post.date %></i></p>
       <p>
-        <%= @post.content %>
+        <%= simple_format(@post.content) %>
       </p>
       <%= link_to 'Bearbeiten', edit_post_path(@post), id: "edit_#{@post.id}" %>
       <%= link_to 'Löschen', post_path(@post), method: :delete, id: "delete_post_#{@post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
