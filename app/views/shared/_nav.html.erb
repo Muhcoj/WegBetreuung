@@ -1,39 +1,42 @@
-<div class='logo'>
+<div class='logo' style="height: 100px;">
   <h1>WEG BETREUUNG</h1>
 </div>
 
-
-<ul class="nav nav-tabs">
-  <li class="<%= active?(posts_path) %>">
-    <%= link_to "Home", posts_path %>
-  </li>
-  <li class="<%= active?(kontoumsaetzes_path) %>">
-    <%= link_to "Kontoumsätze", kontoumsaetzes_path %>
-  </li>
-  <li class="<%= active?(root_path) %>">
-    <%= link_to "Kontakt", root_path %>
-  </li>
-<!--   <li class="disabled">
-    <a href="#">Messages</a>
-  </li> -->
-  <li class="dropdown pull-right">
-     <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
-    <ul class="dropdown-menu">
-      <li>
-        <%= link_to "Bewohner bearbeiten", edit_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Nachricht schreiben und bearbeiten", new_post_path %>
-      </li>
-      <li>
-        <%= link_to "Kontoumsätze hochladen und bearbeiten", kontoumsaetzes_path %>
-      </li>
-      </li>
-        <li class="divider">
-      </li>
-      <li>
-        <%= link_to "Abmelden", destroy_user_session_path, method: :delete %>
-      </li>
-    </ul>
-  </li>
-</ul>
+<% if current_user %>
+  <ul class="nav nav-tabs">
+    <li class="<%= active?(posts_path) %>">
+      <%= link_to "Home", posts_path %>
+    </li>
+    <li class="<%= active?(kontoumsaetzes_path) %>">
+      <%= link_to "Kontoumsätze", kontoumsaetzes_path %>
+    </li>
+    <li class="<%= active?(root_path) %>">
+      <%= link_to "Kontakt", root_path %>
+    </li>
+  <!--   <li class="disabled">
+      <a href="#">Messages</a>
+    </li> -->
+    <li class="dropdown pull-right">
+       <a href="#" data-toggle="dropdown" class="dropdown-toggle">Dropdown<strong class="caret"></strong></a>
+      <ul class="dropdown-menu">
+        <% if current_user.try(:type) == 'AdminUser' %>
+          <li>
+            <%= link_to "Bewohner bearbeiten", edit_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "Nachricht schreiben und bearbeiten", new_post_path %>
+          </li>
+          <li>
+            <%= link_to "Kontoumsätze hochladen und bearbeiten", kontoumsaetzes_path %>
+          </li>
+          </li>
+            <li class="divider">
+          </li>
+        <% end %>
+        <li>
+          <%= link_to "Abmelden", destroy_user_session_path, method: :delete %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+<% end %>

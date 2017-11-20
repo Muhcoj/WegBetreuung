@@ -11,8 +11,10 @@
       <p>
         <%= post.content.truncate(250) %>
       </p>
-      <%= link_to 'Bearbeiten', edit_post_path(post), id: "edit_#{post.id}" %>
-      <%= link_to 'Löschen', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
+      <% if current_user.try(:type) == 'AdminUser' %>
+        <%= link_to 'Bearbeiten', edit_post_path(post), id: "edit_#{post.id}" %>
+        <%= link_to 'Löschen', post_path(post), method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Sind Sie sicher?' } %>
+      <% end %>
     </div>
   </div>
 <% end %>

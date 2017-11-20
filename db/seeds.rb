@@ -10,6 +10,10 @@
 
 puts "1 User created"
 
+AdminUser.create(email: "admintest@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Admin", last_name: "User")
+
+puts "1 AdminUser created"
+
 10.times do |post|
   Post.create!(title: "Some title", content: "Lorem ipsum dolor amet 8-bit meh church-key, actually twee salvia messenger bag swag YOLO bushwick pok pok ennui. Four dollar toast readymade chambray, yuccie tote bag scenester aesthetic art party gentrify lo-fi literally small batch kickstarter fam. Snackwave vinyl cray next level keytar twee raw denim vegan everyday carry. Health goth fashion axe portland lyft small batch trust fund messenger bag cold-pressed flexitarian flannel edison bulb man bun hell of single-origin coffee man braid. Meditation post-ironic cray fanny pack, venmo hot chicken dreamcatcher godard occupy ugh church-key lomo tattooed. Seitan gluten-free vice palo santo yr, small batch retro cloud bread swag organic pour-over keytar truffaut subway tile pork belly. Asymmetrical viral fashion axe green juice franzen, chicharrones tumblr austin forage air plant pickled bespoke fam pop-up.", date: Date.today)
 end
