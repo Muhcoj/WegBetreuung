@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :posts
   devise_for :users, controllers: { registrations: 'registrations'}
   
-  devise_scope :user do
-    root to: "devise/sessions#new"
-  end
+  # devise_scope :user do
+  #   root to: "devise/sessions#new"
+  # end
+
+  root to: 'static#home'
 end
