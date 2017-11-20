@@ -7,7 +7,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if admin_types.include?(current_user.type)
+      @post = Post.new
+    else
+      redirect_to posts_path, alert: 'Access denied'
+    end
   end
 
   def create
@@ -23,10 +27,13 @@ class PostsController < ApplicationController
   def show
   end
 
-  def edit  
+  def edit 
+    authorize @post 
   end
 
   def update
+    authorize @post
+
     if @post.update(post_params)
       redirect_to @post, notice: 'Ihre Nachricht wurde erfolgreich aktualisiert'
     else

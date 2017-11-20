@@ -14,7 +14,11 @@ class KontoumsaetzesController < ApplicationController
  
 
   def new
-    @kontoumsaetze = Kontoumsaetze.new
+    if admin_types.include?(current_user.type)
+      @kontoumsaetze = Kontoumsaetze.new
+    else
+      redirect_to kontoumsaetzes_path, alert: 'Access denied'
+    end
   end
 
   def create
