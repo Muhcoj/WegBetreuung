@@ -11,8 +11,6 @@ class KontoumsaetzesController < ApplicationController
     end
   end
 
- 
-
   def new
     if admin_types.include?(current_user.type)
       @kontoumsaetze = Kontoumsaetze.new
@@ -23,7 +21,8 @@ class KontoumsaetzesController < ApplicationController
 
   def create
     @kontoumsaetze = Kontoumsaetze.new(post_params)
-    @kontoumsaetze.user_id = current_user.id
+    # @kontoumsaetze.user_id = current_user.id
+    @user = @finance.user(params[:id])
 
     if @kontoumsaetze.save
       redirect_to @kontoumsaetze, notice: "Kontoumsätze gespeichert"
@@ -59,7 +58,7 @@ class KontoumsaetzesController < ApplicationController
   private
 
     def post_params
-      params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo)
+      params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo, :user_id)
     end
 
     def set_post

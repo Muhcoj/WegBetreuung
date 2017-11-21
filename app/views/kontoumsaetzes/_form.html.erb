@@ -19,6 +19,10 @@
   <% end %>
 
   <div class="form-group">
+    <%= collection_select( :kontoumsaetze, :user_id, User.all, :id, :last_name, {}, { :multiple => false } ) %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :weg, class: "col-sm-2 control-label" %>
     <%= f.number_field :weg, class: "form-control" %>
   </div>
