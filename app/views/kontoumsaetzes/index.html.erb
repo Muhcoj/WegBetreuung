@@ -15,13 +15,15 @@
       </tr>
     </thead>
 
-    <tbody> 
+    <tbody > 
       <%= render @kontoumsaetzes %>
     </tbody>
+  
   </table>
 
-  <%= paginate @kontoumsaetzes, remote: true %>
-
+  <div>
+    <%= paginate @kontoumsaetzes, remote: true %>
+  </div>
 
 
   <% if current_user.try(:type) == 'AdminUser' %>
