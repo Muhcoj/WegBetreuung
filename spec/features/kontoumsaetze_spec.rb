@@ -29,6 +29,9 @@ describe 'navigate' do
 
   describe 'creation' do
     before do
+      logout(:user)
+      admin_user = AdminUser.create(email: "admintest@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Admin", last_name: "User")
+      login_as(admin_user, :scope => :user)
       visit new_kontoumsaetze_path
     end
 

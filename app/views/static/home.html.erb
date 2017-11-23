@@ -3,3 +3,8 @@
 <div>
   <%= link_to 'Sign In', user_session_path, class: "btn btn-primary" %>
 </div>
+
+<% @users = User.all %>
+<% @users.each do |user| %>
+  <%= user.email %><br/>
+<% end %>

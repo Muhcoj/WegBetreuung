@@ -1,9 +1,13 @@
 class KontoumsaetzesController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_kontoumsaetze, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
   def index
-    @kontoumsaetzes = Kontoumsaetze.all
+    if admin_types.include?(current_user.type)
+      @kontoumsaetzes = Kontoumsaetze.all
+    else
+      @kontoumsaetzes = Kontoumsaetze.kontoumsaetze_by(current_user).page(params[:page]).per(8)
+    end
 
     respond_to do |format|
       format.html
@@ -20,9 +24,9 @@ class KontoumsaetzesController < ApplicationController
   end
 
   def create
-    @kontoumsaetze = Kontoumsaetze.new(post_params)
-    # @kontoumsaetze.user_id = current_user.id
-    @user = @finance.user(params[:id])
+    @kontoumsaetze = Kontoumsaetze.new(kontoumsaetze_params)
+    #@kontoumsaetze.user_id = current_user.id
+    #@user = @finance.user(params[:id])
 
     if @kontoumsaetze.save
       redirect_to @kontoumsaetze, notice: "Kontoumsätze gespeichert"
@@ -38,7 +42,7 @@ class KontoumsaetzesController < ApplicationController
   end
 
   def update
-    if @kontoumsaetze.update(post_params)
+    if @kontoumsaetze.update(kontoumsaetze_params)
       redirect_to @kontoumsaetze, notice: 'Ihre Kontoumsätze wurde erfolgreich aktualisiert'
     else
       render :edit
@@ -57,11 +61,11 @@ class KontoumsaetzesController < ApplicationController
 
   private
 
-    def post_params
+    def kontoumsaetze_params
       params.require(:kontoumsaetze).permit(:weg, :wertstellung, :umsatzart, :buchungsdetails, :auftraggeber, :empfaenger, :betrag, :saldo, :user_id)
     end
 
-    def set_post
+    def set_kontoumsaetze
       @kontoumsaetze = Kontoumsaetze.find(params[:id])
     end
 
