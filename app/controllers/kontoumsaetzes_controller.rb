@@ -4,7 +4,7 @@ class KontoumsaetzesController < ApplicationController
 
   def index
     if admin_types.include?(current_user.type)
-      @kontoumsaetzes = Kontoumsaetze.all
+      @kontoumsaetzes = Kontoumsaetze.page(params[:page]).per(10)
     else
       @kontoumsaetzes = Kontoumsaetze.kontoumsaetze_by(current_user).page(params[:page]).per(8)
     end

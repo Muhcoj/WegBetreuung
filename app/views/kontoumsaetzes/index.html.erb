@@ -20,6 +20,10 @@
     </tbody>
   </table>
 
+  <%= paginate @kontoumsaetzes, remote: true %>
+
+
+
   <% if current_user.try(:type) == 'AdminUser' %>
     <%= link_to "Export", kontoumsaetzes_path(format: "xlsx"), style: "float: right;" %>
 
