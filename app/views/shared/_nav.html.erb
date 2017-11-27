@@ -21,13 +21,16 @@
       <ul class="dropdown-menu">
         <% if current_user.try(:type) == 'AdminUser' %>
           <li>
-            <%= link_to "Bewohner bearbeiten", edit_user_registration_path %>
+            <%#= link_to "Bewohner bearbeiten", edit_user_registration_path, %>
           </li>
           <li>
             <%= link_to "Nachricht schreiben und bearbeiten", new_post_path %>
           </li>
           <li>
-            <%= link_to "Kontoumsätze hochladen und bearbeiten", kontoumsaetzes_path %>
+            <%= link_to "Neue Kontoumsätze hochladen", new_kontoumsaetze_path %>
+          </li>
+          <li>
+            <%= link_to "Kontoumsätze hochladen met excel und bearbeiten", kontoumsaetzes_path %>
           </li>
           </li>
             <li class="divider">

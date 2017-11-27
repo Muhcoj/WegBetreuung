@@ -10,6 +10,10 @@
 
 puts "1 User created"
 
+@second_user = User.create(email: "usertest@test.com", password: "password123", password_confirmation: "password123", first_name: "Bob", last_name: "Bauer")
+
+puts "1 Second User created"
+
 AdminUser.create(email: "admintest@test.com", password: "asdfasdf", password_confirmation: "asdfasdf", first_name: "Admin", last_name: "User")
 
 puts "1 AdminUser created"
@@ -20,8 +24,20 @@ end
 
 puts "10 Posts have been created"
 
-100.times do |kontoumsaetze|
+50.times do |kontoumsaetze|
   Kontoumsaetze.create(weg: 3, wertstellung: "08.08.2017", umsatzart: "Gutschrift", buchungsdetails: "Referenz 9562231945DI", auftraggeber: "ANNEGRET", empfaenger: "Klaus-Dieter", betrag: 100.22, saldo: 12000.87, user_id: @user.id)
 end
 
-puts "100 Kontoumsaetze have been created"
+puts "50 Kontoumsaetze have been created"
+
+
+50.times do |kontoumsaetze|
+  Kontoumsaetze.create(weg: 4, wertstellung: "08.08.2014", umsatzart: "Gutschrift", buchungsdetails: "Referenz 956223", auftraggeber: "John", empfaenger: "Klaus", betrag: 50.22, saldo: 12300.87, user_id: @second_user.id)
+end
+
+puts "50 Kontoumsaetze second user have been created"
+
+
+
+
+
