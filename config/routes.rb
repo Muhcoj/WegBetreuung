@@ -11,4 +11,8 @@ Rails.application.routes.draw do
   # end
 
   root to: 'static#home'
+
+  get 'static/contact'
+
+  post 'static/thank_you'
 end
