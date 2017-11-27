@@ -1,10 +1,11 @@
 class KontoumsaetzesController < ApplicationController
   before_action :set_kontoumsaetze, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  helper_method :sort_column, :sort_direction
 
   def index
     if admin_types.include?(current_user.type)
-      @kontoumsaetzes = Kontoumsaetze.page(params[:page]).per(10)
+      @kontoumsaetzes = Kontoumsaetze.order(sort_column + " " + sort_direction).page(params[:page]).per(10)
     else
       @kontoumsaetzes = Kontoumsaetze.kontoumsaetze_by(current_user).page(params[:page]).per(8)
     end
@@ -69,4 +70,11 @@ class KontoumsaetzesController < ApplicationController
       @kontoumsaetze = Kontoumsaetze.find(params[:id])
     end
 
+    def sort_column
+      params[:sort] || "weg"
+    end
+
+    def sort_direction
+      params[:direction] || "asc"
+    end
 end
